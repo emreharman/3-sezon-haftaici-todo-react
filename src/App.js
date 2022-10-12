@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Todo from "./components/Todo";
 
 function App() {
   const [todoText, setTodoText] = useState("");
   const [yapilacaklarListesi, setYapilacaklarListesi] = useState([]);
+  
+  useEffect(()=>{
+    const fromLocalStorage=localStorage.getItem("yapilacaklarListesi")
+    console.log("fromLocalStorage",fromLocalStorage)
+    if(fromLocalStorage === null){
+      localStorage.setItem("yapilacaklarListesi",JSON.stringify([]))
+    }else{
+      setYapilacaklarListesi(JSON.parse(fromLocalStorage))
+    }
+  },[])
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,6 +29,7 @@ function App() {
       createdAt: new Date(),
     };
     setYapilacaklarListesi([...yapilacaklarListesi, todo]);
+    localStorage.setItem("yapilacaklarListesi",JSON.stringify([...yapilacaklarListesi, todo]))
     setTodoText("");
   };
   return (
