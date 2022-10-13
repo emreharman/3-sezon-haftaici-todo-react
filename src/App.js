@@ -13,6 +13,7 @@ function App() {
     }else{
       setYapilacaklarListesi(JSON.parse(fromLocalStorage))
     }
+    //localStorage.setItem("yapilacaklarListesi",yapilacaklarListesi)
   },[])
 
 

@@ -24,6 +24,7 @@ const Todo = (props) => {
     );
     const yeniDizi = [...cikarilmisDizi, newTodo];
     setYapilacaklarListesi(yeniDizi);
+    localStorage.setItem("yapilacaklarListesi",JSON.stringify(yeniDizi))
   };
   const handleEdit=()=>{
     const newTodo={
@@ -39,6 +40,7 @@ const Todo = (props) => {
       }
     }
     setYapilacaklarListesi(updatedArray)
+    localStorage.setItem("yapilacaklarListesi",JSON.stringify(updatedArray))
     /* const cikarilmisDizi=yapilacaklarListesi.filter(item=>item.id !== todo.id)
     setYapilacaklarListesi([...cikarilmisDizi,newTodo]) */
     setIsEdit(false)
